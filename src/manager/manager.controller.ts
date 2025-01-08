@@ -18,8 +18,8 @@ export class ManagerController {
 
   // Get all managers for a specific property
   @Get(':property_id/managers') 
-  findAllByProperty(@Param('property_id', ParseIntPipe) property_id: number) {
-    return this.managerService.findAllByProperty(property_id);
+  findAll(@Param('property_id', ParseIntPipe) property_id: number) {
+    return this.managerService.findAll(property_id);
   }
 
   // Get a specific manager for a specific property
@@ -47,5 +47,14 @@ export class ManagerController {
     @Param('manager_id', ParseIntPipe) manager_id: number
   ) {
     return this.managerService.remove(property_id, manager_id);
+  }
+
+  // Creates multiple managers
+  @Post(':property_id/managers/bulk')
+  async bulkCreateManagers(
+    @Param('property_id', ParseIntPipe) property_id: number,
+    @Body() createManagersDto: CreateManagerDto[],
+  ) {
+    return this.managerService.bulkCreateManagers(property_id, createManagersDto);
   }
 }

@@ -35,7 +35,7 @@ export class ManagerService {
   }
 
   // Find all managers for a given property
-  async findAllByProperty(property_id: number): Promise<Manager[]> {
+  async findAll(property_id: number): Promise<Manager[]> {
     const property = await this.propertyRepository.findOne({where: { property_id: property_id }});
     if(!property)
       throw new HttpException(
@@ -83,5 +83,28 @@ export class ManagerService {
   ): Promise<void> {
     const manager = await this.findOne(property_id, manager_id);
     await this.managerRepository.remove(manager);
+  }
+
+  // Creates multiple managers
+  async bulkCreateManagers(
+    property_id: number,
+    createManagersDto: CreateManagerDto[],
+  ): Promise<Manager[]> {
+    const property = await this.propertyRepository.findOne({ where: { property_id } });
+  
+    if (!property) {
+      throw new HttpException('Property not found. Cannot create managers!', HttpStatus.BAD_REQUEST);
+    }
+  
+    // Map each manager DTO to a new Manager entity and save them
+    const managers = createManagersDto.map((managerDto) => {
+      const newManager = this.managerRepository.create({
+        ...managerDto,
+        property,
+      });
+      return this.managerRepository.save(newManager); // Save each manager
+    });
+  
+    return Promise.all(managers); // Wait for all managers to be saved
   }
 }
