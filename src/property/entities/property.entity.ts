@@ -1,4 +1,5 @@
 import { Manager } from "src/manager/entities/manager.entity";
+import { Resident } from "src/resident/entities/resident.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 
@@ -39,4 +40,10 @@ export class Property{
         cascade: true,
     })
     managers: Manager[];
+
+    //Relationship with Residents
+    @OneToMany(() => Resident, (resident) => resident.property, {
+        cascade: true,
+    })
+    residents: Resident[];
 }

@@ -22,7 +22,7 @@ export class PropertyService {
   //Returns all properties
   async findAll(): Promise<Property[]> {
     //NOTE!! Delete relationships so this code is faster
-    return this.propertyRepository.find({relations: ['managers' /*, 'parkingSpots', 'admins'*/]})
+    return this.propertyRepository.find({relations: ['managers', 'residents' /*, 'parkingSpots', 'admins'*/]})
   }
 
   //Returns a specific property
@@ -30,7 +30,7 @@ export class PropertyService {
     //NOTE!! Delete relationships so this code is faster
     const property = await this.propertyRepository.findOne({
       where: { property_id: property_id },
-      relations: ['managers' /*, 'parkingSpots', 'admins'*/], 
+      relations: ['managers', 'residents' /*, 'parkingSpots', 'admins'*/], 
     });
     if(!property){
       throw new NotFoundException(`Property with ID ${property_id} not found`);
