@@ -5,6 +5,7 @@ export type updateResidentParam = {
     last_name: string;
     email: string;
     password: string;
+    creation_date: Date;
     vehicles_allowed: number;
     visitors_allowed: number;
 }

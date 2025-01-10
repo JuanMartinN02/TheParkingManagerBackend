@@ -1,5 +1,5 @@
 import { Property } from "src/property/entities/property.entity";
-import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, CreateDateColumn } from "typeorm";
 
 @Entity({ name: 'Resident' })
 export class Resident {
@@ -26,6 +26,9 @@ export class Resident {
 
     @Column()
     visitors_allowed: number;
+
+    @CreateDateColumn()
+    creation_date: Date; // Auto-generated creation timestamp  
 
     @ManyToOne(() => Property, (property) => property.residents, { onDelete: 'CASCADE' })
     property: Property;

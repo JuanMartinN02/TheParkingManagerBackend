@@ -1,6 +1,6 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateResidentDto } from './create-resident.dto';
-import { IsEmail, IsNumber, IsString } from "class-validator";
+import { IsDate, IsEmail, IsNumber, IsString } from "class-validator";
 
 export class UpdateResidentDto extends PartialType(CreateResidentDto) {
     @IsNumber()
@@ -23,6 +23,9 @@ export class UpdateResidentDto extends PartialType(CreateResidentDto) {
 
     @IsNumber()
     vehicles_allowed: number;
+
+    @IsDate()
+    creation_date: Date;
 
     @IsNumber()
     visitors_allowed: number;

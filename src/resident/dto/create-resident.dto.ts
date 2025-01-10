@@ -1,4 +1,4 @@
-import { IsEmail, IsNumber, IsString, IsNotEmpty } from "class-validator";
+import { IsEmail, IsNumber, IsString, IsNotEmpty, IsDate } from "class-validator";
 
 export class CreateResidentDto {
 
@@ -22,6 +22,9 @@ export class CreateResidentDto {
 
     @IsNumber()
     vehicles_allowed: number;
+
+    @IsDate()
+    creation_date: Date;
 
     @IsNumber()
     visitors_allowed: number;

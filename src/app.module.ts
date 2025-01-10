@@ -8,6 +8,8 @@ import { ManagerModule } from './manager/manager.module';
 import { Manager } from './manager/entities/manager.entity';
 import { ResidentModule } from './resident/resident.module';
 import { Resident } from './resident/entities/resident.entity';
+import { ParkingSpotModule } from './parking-spot/parking-spot.module';
+import { ParkingSpot } from './parking-spot/entities/parking-spot.entity';
 
 @Module({
   imports: [
@@ -18,13 +20,14 @@ import { Resident } from './resident/entities/resident.entity';
       username: 'AdminJuan',
       password: 'Admin0204',
       database: 'the_parking_manager_db',
-      entities: [Property, Manager, Resident],
+      entities: [Property, Manager, Resident, ParkingSpot],
       synchronize: true,
       dropSchema: true,
     }),
     PropertyModule,
     ManagerModule,
     ResidentModule,
+    ParkingSpotModule,
   ],
   controllers: [AppController],
   providers: [AppService],
