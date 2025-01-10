@@ -1,4 +1,5 @@
 import { Manager } from "src/manager/entities/manager.entity";
+import { ParkingSpot } from "src/parking-spot/entities/parking-spot.entity";
 import { Resident } from "src/resident/entities/resident.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
@@ -46,4 +47,10 @@ export class Property{
         cascade: true,
     })
     residents: Resident[];
+
+    //Relationship with Parking Spots
+    @OneToMany(() => ParkingSpot, (parkingSpot) => parkingSpot.property, {
+        cascade: true,
+    })
+    parkingSpots: ParkingSpot[];
 }
