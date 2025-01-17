@@ -1,6 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateParkingSpotDto } from './dto/create-parking-spot.dto';
-import { UpdateParkingSpotDto } from './dto/update-parking-spot.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Property } from 'src/property/entities/property.entity';
 import { ParkingSpot } from './entities/parking-spot.entity';

@@ -10,6 +10,10 @@ import { ResidentModule } from './resident/resident.module';
 import { Resident } from './resident/entities/resident.entity';
 import { ParkingSpotModule } from './parking-spot/parking-spot.module';
 import { ParkingSpot } from './parking-spot/entities/parking-spot.entity';
+import { TowerModule } from './tower/tower.module';
+import { Tower } from './tower/entities/tower.entity';
+import { SysAdminModule } from './sys-admin/sys-admin.module';
+import { SysAdmin } from './sys-admin/entities/sys-admin.entity';
 
 @Module({
   imports: [
@@ -20,7 +24,7 @@ import { ParkingSpot } from './parking-spot/entities/parking-spot.entity';
       username: 'AdminJuan',
       password: 'Admin0204',
       database: 'the_parking_manager_db',
-      entities: [Property, Manager, Resident, ParkingSpot],
+      entities: [Property, Manager, Resident, ParkingSpot, Tower, SysAdmin],
       synchronize: true,
       dropSchema: true,
     }),
@@ -28,6 +32,8 @@ import { ParkingSpot } from './parking-spot/entities/parking-spot.entity';
     ManagerModule,
     ResidentModule,
     ParkingSpotModule,
+    TowerModule,
+    SysAdminModule
   ],
   controllers: [AppController],
   providers: [AppService],
