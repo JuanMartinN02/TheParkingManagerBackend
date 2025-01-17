@@ -30,6 +30,8 @@ export class Resident {
     @CreateDateColumn()
     creation_date: Date; // Auto-generated creation timestamp  
 
+    //NOTA!!! AGREGAR PHONE NUMBER!!!
+
     @ManyToOne(() => Property, (property) => property.residents, { onDelete: 'CASCADE' })
     property: Property;
 }
